@@ -11,7 +11,7 @@ mouse_index = (0, 0)
 w, h = (1, 1)
 label = np.zeros((ROW, COL), dtype=np.uint8)
 cnt = 0
-value = 0
+value = 1
 def replaceArea(img, index, value, img_ori):
     img = img.copy()
     # w, h = img.shape[1]//COL, img.shape[0]//ROW
