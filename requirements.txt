@@ -1,0 +1,9 @@
+glob
+opencv
+ultralytics
+airsim
+pynput
+Pillow
+msgpack-rpc-python
+numpy
+
