@@ -1,9 +1,10 @@
 # train.py
 IMG_SIZE_TRAIN = (144, 256)
-BATCH_SIZE = 4
+BATCH_SIZE = 16
 EPOCHS = 500
 SAVE_PATH = "./weight.pth"
 SAVE_EACH_EPOCH = True
+PRE_MODEL = ""
 DATA_ROOT = r"E:\DATN\Dataset\v5"
 ROW = 5
 COL = 9

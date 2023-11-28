@@ -5,8 +5,13 @@ from model import UAM8
 import torch
 from torch.nn import MSELoss
 from config import *
-from utils import accuracy
-net = UAM8()
+from utils import accuracy, load_model
+import os
+
+if os.path.exists(PRE_MODEL):
+    net = load_model(UAM8(), PRE_MODEL)
+else:
+    net = UAM8()
 
 # Create Dataloader
 resize = IMG_SIZE_TRAIN
