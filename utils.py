@@ -130,3 +130,8 @@ def pil2cv2(img):
     open_cv_image = np.array(img) 
     # Convert RGB to BGR 
     return open_cv_image[:, :, ::-1].copy() 
+
+def getNameFile(path):
+    file = os.path.basename(path)
+    name, tail = file.split(".")
+    return name, tail

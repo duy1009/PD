@@ -7,7 +7,7 @@ import torch
 from PIL import Image
 import time 
 import glob
-ROW, COL = 3, 5
+ROW, COL = 5, 9
 THRES = 0.8
 w, h = (1, 1)
 def replaceArea(img, index, value, img_ori):
@@ -29,7 +29,7 @@ def updateImg(img_ori, label):
     return img
 
 datatest = glob.glob(r"E:\DATN\Dataset\v2\val\images\**")
-net = load_model(UAM8(), "E:\DATN\Code\PD\weight (6).pth")
+net = load_model(UAM8(), "E:\DATN\Code\PD\weight_v4.pth")
 transform = ImageTransform(IMG_SIZE)
 cnt = 0
 while True:

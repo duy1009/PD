@@ -35,7 +35,7 @@ class UAM8(nn.Module):
         self.res3 = ResBlockResnet8(64, 128)
 
         self.fc1 = nn.Linear(5120, 512)
-        self.fc2 = nn.Linear(512, 15)
+        self.fc2 = nn.Linear(512, 45)
 
         self.dropout = nn.Dropout(0.1)
         self.af = nn.Sigmoid()

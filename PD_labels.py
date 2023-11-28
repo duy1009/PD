@@ -2,9 +2,9 @@ import cv2
 import glob
 import os
 import numpy as np
-from utils import loadLabel, saveLabel
-IMGS_ROOT = r"E:\DATN\Dataset\indoor_images\env1"
-LABELS_ROOT = r"E:\DATN\Dataset\v3\labels"
+from utils import loadLabel, saveLabel, getNameFile
+IMGS_ROOT = r"E:\DATN\Dataset\indoor_images\images"
+LABELS_ROOT = r"E:\DATN\Dataset\indoor_labels\labels"
 ROW = 5
 COL = 9
 mouse_index = (0, 0)
@@ -50,10 +50,7 @@ def updateImg(img_ori, label):
     return img
 
 
-def getNameFile(path):
-    file = os.path.basename(path)
-    name, tail = file.split(".")
-    return name, tail
+
 # Tạo cửa sổ hiển thị hình ảnh và gắn hàm callback chuột
 cv2.namedWindow('PD labels')
 cv2.setMouseCallback('PD labels', click_event)

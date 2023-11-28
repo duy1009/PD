@@ -51,11 +51,11 @@ def train(net, dataloader_dict, criterior, optimizer, epochs, save_path, save_ea
                 # cv2.waitKey(0)
                 out = net(img)
                 loss = criterior(out, label)
-                print(out)
                 loss.backward()
                 optimizer.step()
                 epoch_loss+=loss.item()*img.size(0)
-                acc+= accuracy(out, label, 0.3)
+                acc+= accuracy(out, label, 0.3)*batch_size
+
 
         loss_avg = epoch_loss/len(dataloader_dict["train"].dataset)
         acc_avg = acc/len(dataloader_dict["train"].dataset)
@@ -70,7 +70,7 @@ def train(net, dataloader_dict, criterior, optimizer, epochs, save_path, save_ea
                 out = net(img)
                 loss = criterior(out, label)
                 epoch_loss+=loss.item()*img.size(0)
-                acc+= accuracy(out, label, 0.3)
+                acc+= accuracy(out, label, 0.3)*batch_size
 
         loss_avg = epoch_loss/len(dataloader_dict["val"].dataset)
         acc_avg = acc/len(dataloader_dict["val"].dataset)
