@@ -34,7 +34,7 @@ def updateImg(img_ori, label):
 
 datatest = glob.glob(os.path.join(ROOT, "images", "**"))
 labels = glob.glob(os.path.join(ROOT, "labels", "**"))
-net = load_model(UAM8(), "E:\DATN\Code\PD\weight_v4.pth")
+net = load_model(UAM8(), r"E:\DATN\Code\PD\weightv5.pt")
 transform = ImageTransform(IMG_SIZE)
 cnt = 0
 

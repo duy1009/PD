@@ -10,6 +10,6 @@ ROW = 5
 COL = 9
 
 # main.py
-WEIGHT_LOAD = "./weight.pth"
+WEIGHT_LOAD = "./weightv5.pth"
 ARM = [-20, 100.5, -5.75]
 IMG_SIZE = (144, 256)
