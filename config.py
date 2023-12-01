@@ -5,7 +5,7 @@ EPOCHS = 500
 SAVE_PATH = "./weight.pth"
 SAVE_EACH_EPOCH = True
 PRE_MODEL = ""
-DATA_ROOT = r"E:\DATN\Dataset\v5"
+DATA_ROOT = r"E:\DATN\Dataset\v6"
 ROW = 5
 COL = 9
 

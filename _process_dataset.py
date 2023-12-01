@@ -79,7 +79,7 @@ class MyDataset(data.Dataset):
         img_path = self.file_list["images"][index] 
         lab_path = self.file_list["labels"][index]
 
-        img = Image.open(img_path)
+        img = Image.open(img_path).convert('RGB')
         img_trans = self.transform(img, self.phase).to(self.device)
         label = torch.tensor(loadLabel(lab_path, ROW, COL), dtype=torch.float32, device=self.device)
         label = torch.reshape(label, (-1,))
