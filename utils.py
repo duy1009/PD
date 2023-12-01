@@ -5,7 +5,7 @@ import sys
 import airsim
 import torch
 import numpy as np
-from math import pi, acos,sqrt
+from math import pi, acos,sqrt, cos, sin
 
 def angle2D(vector):
     x, y = vector[0],vector[1]
@@ -135,3 +135,8 @@ def getNameFile(path):
     file = os.path.basename(path)
     name, tail = file.split(".")
     return name, tail
+
+def rollPoint2D(point, angle):
+    '''angle: rad'''
+    x,y = point
+    return x*cos(angle)-y*sin(angle), x*sin(angle) + y*cos(angle)
