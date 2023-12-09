@@ -13,7 +13,7 @@ from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
 ROW, COL = 5, 9
 THRES = 0.8
 w, h = (1, 1)
-ROOT = r"E:\DATN\Dataset\indoor_images"
+ROOT = r"E:\DATN\Dataset\v6\train"
 def replaceArea(img, index, value, img_ori):
     img = img.copy()
     # w, h = img.shape[1]//COL, img.shape[0]//ROW
@@ -34,7 +34,7 @@ def updateImg(img_ori, label):
 
 datatest = glob.glob(os.path.join(ROOT, "images", "**"))
 labels = glob.glob(os.path.join(ROOT, "labels", "**"))
-net = load_model(UAM8(), r"E:\DATN\Code\PD\weightv5.pt")
+net = load_model(UAM8(), r"E:\DATN\Code\PD\weightv6_2.pt")
 transform = ImageTransform(IMG_SIZE)
 cnt = 0
 

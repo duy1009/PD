@@ -14,11 +14,16 @@ COE = torch.tensor([[0.7, 0.725, 0.75, 0.775, 0.8, 0.775, 0.75, 0.725, 0.7],
                 [0.8, 0.825, 0.85, 0.875, 0.9, 0.875, 0.85, 0.825, 0.8],
                 [0.7, 0.725, 0.75, 0.775, 0.8, 0.775, 0.75, 0.725, 0.7]])# coefficient
 HFOV = math.radians(90)
-VFOV = math.radians(60)
+VFOV = getVFOVRad(HFOV, IMG_SIZE[::-1])
+print(f"[Camera]: HFOV = {HFOV*180/pi}\t VFOV = {VFOV*180/pi}")
 w, h = (1, 1)
 def chooseDir(pred):
     ind1d = torch.argmax(pred * torch.reshape(COE, (-1, ))).item()
-    return ind1d - COL*(ind1d//COL) , ind1d//COL
+    print("Acc: ", pred[ind1d])
+    if pred[ind1d] < 0.7:
+        return None, None
+    else:
+        return ind1d - COL*(ind1d//COL) , ind1d//COL
 
 def getCenter(max):
     return (max-1)/2
@@ -39,7 +44,7 @@ def getNextPos(current_pos, pitch, yaw, next_pitch, next_yaw, velocity):
     x, y, z = current_pos
     real_pitch, real_yaw = pitch + next_pitch, yaw + next_yaw
     x_val, y_val, z_val = getPosVal(real_pitch, real_yaw, velocity)
-    return x + x_val, y + y_val, z - z_val # z < 0
+    return x + x_val*1.5, y + y_val*1.5, z - z_val*1.5 # z < 0
 
 def replaceArea(img, index, value, img_ori, color = (0, 0, 255)):
     img = img.copy()
@@ -91,12 +96,20 @@ while True:
     img = Image.fromarray(imgcv2)
     img = torch.unsqueeze(transform(img, "train"), dim=0)
     w, h = imgcv2.shape[1]//COL, imgcv2.shape[0]//ROW
-
+    # convert to show image
+    imgcv2 = cv2.cvtColor(imgcv2, cv2.COLOR_RGB2BGR)
     # predict
     result = net(img)[0]
     x_ind, y_ind = chooseDir(result)
+    if x_ind == None or y_ind == None:
+        cv2.imshow("a", imgcv2)
+        k = cv2.waitKey(1)
+        if k == ord("q"):
+            break
+        print("No action")
+        time.sleep(1)
+        continue
     pitch_pred, yaw_pred = getAngle(x_ind, y_ind)
-    print(pitch_pred, yaw_pred)
     next_pos = getNextPos(current_pos, pitch, yaw, pitch_pred, yaw_pred, UAV_VELOCITY*1.5)
     yaw_deg = math.degrees(yaw + yaw_pred)
 
@@ -108,10 +121,9 @@ while True:
     if k == ord("q"):
         break
     # move
-    print(next_pos)
     client.moveToPositionAsync(next_pos[0], next_pos[1], next_pos[2], UAV_VELOCITY,
                                 drivetrain=airsim.DrivetrainType.MaxDegreeOfFreedom,
-                                yaw_mode=airsim.YawMode(False, yaw_deg)).join()
+                                yaw_mode=airsim.YawMode(False, yaw_deg))
         
-    time.sleep(0.05)
+    time.sleep(0.2)
             

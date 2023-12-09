@@ -29,7 +29,7 @@ def updateImg(img_ori, label):
     return img
 
 datatest = glob.glob(r"E:\DATN\Dataset\v2\val\images\**")
-net = load_model(UAM8(), "E:\DATN\Code\PD\weight_v4.pth")
+net = load_model(UAM8(), "E:\DATN\Code\PD\weightv6.pt")
 transform = ImageTransform(IMG_SIZE)
 cnt = 0
 while True:

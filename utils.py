@@ -5,7 +5,7 @@ import sys
 import airsim
 import torch
 import numpy as np
-from math import pi, acos,sqrt, cos, sin
+from math import pi, acos,sqrt, cos, sin, atan, tan
 
 def angle2D(vector):
     x, y = vector[0],vector[1]
@@ -135,7 +135,20 @@ def getNameFile(path):
     file = os.path.basename(path)
     name, tail = file.split(".")
     return name, tail
-
+def getVFOV(HFOV, img_size):
+    ''' 
+        HFOV: Degree
+        img_size: (w, h)
+    '''
+    w, h = img_size
+    return 2*atan(h/w * tan(HFOV*pi/360))*180/pi
+def getVFOVRad(HFOV, img_size):
+    ''' 
+        HFOV: rad
+        img_size: (w, h)
+    '''
+    w, h = img_size
+    return 2*atan(h/w * tan(HFOV/2))
 def rollPoint2D(point, angle):
     '''angle: rad'''
     x,y = point

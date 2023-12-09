@@ -3,8 +3,8 @@ import glob
 import os
 import numpy as np
 from utils import loadLabel, saveLabel, getNameFile
-IMGS_ROOT = r"E:\DATN\Dataset\temp"
-LABELS_ROOT = r"E:\DATN\Dataset\label"
+IMGS_ROOT = r"E:\DATN\Dataset\v6\train\images"
+LABELS_ROOT = r"E:\DATN\Dataset\v6\train\labels"
 ROW = 5
 COL = 9
 mouse_index = (0, 0)

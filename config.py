@@ -10,7 +10,7 @@ ROW = 5
 COL = 9
 
 # main.py
-WEIGHT_LOAD = "./weightv5_2.pt"
+WEIGHT_LOAD = "./models/weightv6_3.pt"
 ARM = [-20, 100.5, -5.75]
 IMG_SIZE = (144, 256)
-UAV_VELOCITY = 2
+UAV_VELOCITY = 1
