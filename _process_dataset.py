@@ -124,6 +124,7 @@ def make_data_path_list_lstm(root ="./data", phase = "train", sequence_length = 
         if os.path.exists(path_lab):
             path_im_list.append(path_im)
             path_lab_list.append(path_lab)
+    print(f"[DATA {phase}]:{len(path_im_list)} items found!")
     # split by name
     path_im_list = split_by_name(path_im_list)
     path_lab_list = split_by_name(path_lab_list)
