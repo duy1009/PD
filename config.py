@@ -8,6 +8,7 @@ PRE_MODEL = ""
 DATA_ROOT = r"E:\DATN\Dataset\v6"
 ROW = 5
 COL = 9
+SEQ_LEN = 5
 
 # main.py
 WEIGHT_LOAD = "./models/weightv6_3.pt"

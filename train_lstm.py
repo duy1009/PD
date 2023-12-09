@@ -17,8 +17,8 @@ else:
 resize = IMG_SIZE_TRAIN
 batch_size = BATCH_SIZE
 data_root = DATA_ROOT
-list_train = make_data_path_list_lstm(root = DATA_ROOT, phase="train")
-list_val = make_data_path_list_lstm(root = DATA_ROOT,phase="val")
+list_train = make_data_path_list_lstm(root = DATA_ROOT, phase="train", sequence_length= SEQ_LEN)
+list_val = make_data_path_list_lstm(root = DATA_ROOT,phase="val", sequence_length= SEQ_LEN)
 print(f"[DATA]:", len(list_train["labels"]),"items found!")
 
 train_dataset = DatasetLSTM(list_train, transform=ImageTransform(resize), phase="train")
