@@ -35,7 +35,9 @@ for name, param in net.named_parameters():
     param.requires_grad = True  # Always update
 
 # Optimizer
-optimizer = torch.optim.SGD(params=net.parameters(), lr=0.001, momentum=0.9)
+# optimizer = torch.optim.SGD(params=net.parameters(), lr=0.01, momentum=0.9)
+optimizer = torch.optim.Adam(params=net.parameters(), lr=0.01)
+
 
 def train(net, dataloader_dict, criterior, optimizer, epochs, save_path, save_each_epoch):
     device = 'cuda' if torch.cuda.is_available() else 'cpu'
