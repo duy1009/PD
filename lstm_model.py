@@ -35,7 +35,7 @@ class UAM8LSTM(nn.Module):
         self.res2 = ResBlockResnet8(32, 64)
         self.res3 = ResBlockResnet8(64, 128)
 
-        self.lstm = nn.LSTM(5120, 45, 3)
+        self.lstm = nn.LSTM(5120, 45, 300)
 
         self.af = nn.Sigmoid()
 
@@ -59,13 +59,13 @@ class UAM8LSTM(nn.Module):
         
 
 
-# model = UAM8LSTM()
-# params = sum(p.numel() for p in model.parameters())
-# print("Number of parameters:", params)
+model = UAM8LSTM()
+params = sum(p.numel() for p in model.parameters())
+print("Number of parameters:", params)
 
-# a = torch.rand((2, 3, 144, 256))
-# print(a.size())
-# out = model(a)
-# print(out.size())
+a = torch.rand((2, 5, 3, 144, 256))
+print(a.size())
+out = model(a)
+print(out.size())
 
 
