@@ -1,7 +1,7 @@
 from _process_dataset import DatasetLSTM, ImageTransform, make_data_path_list_lstm
 from torch.utils.data import DataLoader
 from tqdm import tqdm
-from lstm_model import UAM8LSTM
+from networks.lstm_model import UAM8LSTM
 import torch
 from torch.nn import MSELoss
 from config import *
