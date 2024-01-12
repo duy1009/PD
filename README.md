@@ -15,7 +15,7 @@ Go to PD_labels.py file and edit:\
 python PD_labels.py
 ```
 - **Guide**:\
-Turn off Unikey and Caps lock before using\
+Turn off Unikey and Caps lock before use\
 ![image](https://github.com/duy1009/PD/assets/84137684/2ec41de4-38e7-4a72-831f-8d25ec00889f)
 
 
