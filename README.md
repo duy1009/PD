@@ -67,7 +67,7 @@ python3 train_lstm.py
 ```
 
 ### Training your model
-1. Push your model file to the `network` folder
+1. Push your model file to the `networks` folder
 2. If your model is sequence go to `train_lstm.py` else go to `train.py`
 3. Import your model
 ```
